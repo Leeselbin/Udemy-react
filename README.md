@@ -248,3 +248,87 @@ console.log(name);
 - BUT 멀티스레드 방식으로 작동시키면 작업 분할 가능하다~~
 - BUTBUT!!@ 자바스크립트는 싱글스레드......... ㅅㄱ바위
 - 콜백함수 호출해서 작업종료를 알린다.
+
+#### Promise - 자바스크립트의 비동기를 도와줌
+
+- 비동기 작업이 가질 수 있는 3가지 상태
+- Pending(대기상태) , Fulfilled(성공) , Rejected(실패)
+- Pending -> Fulfilled (해결resolve)
+- Pending -> Rejected (거부reject)
+
+#### 콜백을 이용한 비동기처리
+
+```javascript
+function isPositive(number, resolve, reject) {
+  setTimeout(() => {
+    if (typeof number === "number") {
+      //성공 -> resolve
+      resolve(number >= 0 ? "양수" : "음수");
+    } else {
+      //실패 -> reject
+      reject("주어진 값이 숫자형 값이 아닙니다");
+    }
+  }, 2000);
+}
+
+isPositive(
+  [],
+  (res) => {
+    console.log("성공적으로 수행됨:", res);
+  },
+  (err) => {
+    console.log("실패 하였음:", err);
+  }
+);
+```
+
+#### 콜백지옥 Promise로 처리하기
+
+- Promis 객체를 이용하면 비동기처리를 호출하는 코드와 결과를 처리하는코드를 분리 할 수있다.
+
+```javascript
+function taskA(a, b) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a + b;
+      resolve(res);
+    }, 3000);
+  });
+}
+
+function taskB(a) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a * 2;
+      resolve(res);
+    }, 1000);
+  });
+}
+
+function taskC(a) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const res = a * -1;
+      resolve(res);
+    }, 2000);
+  });
+}
+
+const bPromiseResult = taskA(5, 1).then((a_res) => {
+  console.log("a결과:", a_res);
+  return taskB(a_res);
+});
+
+console.log("adasdasdasdasd"); //중간에 코드 껴넣을수 있다.
+
+bPromiseResult
+  .then((b_res) => {
+    console.log("b결과:", b_res);
+    return taskC(b_res);
+  })
+  .then((c_res) => {
+    console.log("c결과:", c_res);
+  });
+```
+
+#### JSX
