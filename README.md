@@ -30,3 +30,24 @@ let helloA = () => {
 
 let helloA = () => return hi;
 ```
+
+#### 객체선언
+
+```
+let person = new Object(); // person 객체 생성
+let person = {};  // 객체 리터럴 방식
+```
+
+- 벨류값은 어떠한 자료형이 들어와도 상관없다
+- key값은 무조건 String타입 이어야한다.
+
+```javascript
+let person = {
+  key: "value", // 프로퍼티 (객체 프로퍼티)
+  key1: 123,
+  key2: true,
+  key3: undefined,
+  key4: [1, 2],
+  key5: function () {},
+}; // 객체 리터럴 방식
+```
