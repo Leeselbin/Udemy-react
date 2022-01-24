@@ -203,3 +203,47 @@ console.log(arr.join()); // 1,2,3,4
 ```
 
 ---
+
+#### Truthy & Falsy
+
+- true 로 분류하는 값 = Truthy = [], {}, number, String, "false", Infinity
+
+- false 로 분류하는 값 = Falsy = null, undefined, 0 , -0, NaN, ""
+
+#### 삼항연산자
+
+- 조건 ? 참: 거짓 ex) a>0 ? true : false;
+
+```javascript
+let a = 3;
+if (a >= 0) {
+  console.log("양수");
+} else {
+  console.log("음수");
+}
+//밑에처럼 한줄로 줄일수 있다.
+a >= 0 ? console.log("양수") : console.log("음수");
+```
+
+#### 단락회로 평가
+
+```javascript
+const getName = (person) => {
+  const name = person && person.name;
+  return name || "객체가 아닙니다";
+};
+
+let person = null;
+const name = getName(person);
+console.log(name);
+```
+
+---
+
+#### 동기와 비동기
+
+- 이건알자나..
+
+- 동기처리 방식의 문제 : 하나의작업이 너무 오래 걸리게 될 시, 모든작업이 하나의 작업이 종료되기 전 까지 올 스탑 되기 때문에, 전반적인 흐름이 느려진다.
+- BUT 멀티스레드 방식으로 작동시키면 작업 분할 가능하다~~
+- BUTBUT!!@ 자바스크립트는 싱글스레드......... ㅅㄱ바위
