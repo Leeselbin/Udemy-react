@@ -369,3 +369,9 @@ const MyComponent = React.memo(function MyComponent(props) {
   /* props를 사용하여 렌더링 */
 });
 ```
+
+---
+
+#### 페이지 라우팅 Page Routing
+
+- Routing이란? -> 어떤 네트워크 내에서 통신 데이터를 보낼 겨올를 선택하는 일련의 과정
