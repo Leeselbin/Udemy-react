@@ -359,3 +359,13 @@ const getDiaryAnalysis = useMemo(() => {}, [data.length]);
 ```
 
 #### React.memo 함수형 컴포넌트에게 업데이트 조건을 걸자.
+
+- React.memo는 고차 컴포넌트(Higher Order Component)입니다.
+- 고차 컴포넌트는 컴포넌트를 가져와 새 컴포넌트를 반환하는 함수입니다.
+- React는 컴포넌트를 렌더링하지 않고 마지막으로 렌더링된 결과를 재사용합니다.
+
+```javascript
+const MyComponent = React.memo(function MyComponent(props) {
+  /* props를 사용하여 렌더링 */
+});
+```
