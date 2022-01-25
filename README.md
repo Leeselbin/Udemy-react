@@ -1,5 +1,10 @@
 # Udemy-react
 
+### 특징
+
+- SPA(Single Page Application)
+- CSR(Client Side Rendering)
+
 유데미 한입크기로 잘라 먹는 리엑트 강의
 
 #### 1일차
@@ -374,4 +379,5 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 #### 페이지 라우팅 Page Routing
 
-- Routing이란? -> 어떤 네트워크 내에서 통신 데이터를 보낼 겨올를 선택하는 일련의 과정
+- ROUTER -> 데이터의 경로를 실시간으로 지정해주는 역할을 하는 무언가
+- ROUTING -> 경로를 정해주는 행위 자체와 그런 과정들을 다 포함하여 일컫는 말
