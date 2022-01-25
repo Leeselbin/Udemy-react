@@ -331,4 +331,31 @@ bPromiseResult
   });
 ```
 
-#### JSX
+---
+
+#### Mount, Unmount
+
+```javascript
+const UnmountTest = () => {
+  useEffect(() => {
+    console.log("Mount!");
+
+    return () => {
+      //Unmount 시점에 실행되게됨
+      console.log("Unmount!");
+    };
+  }, []);
+  return <div>Unmount Testing Component</div>;
+};
+```
+
+#### 동기 비동기 체크하기
+
+#### Memoization , useMemo()
+
+```javascript
+// useMemo(() => {},[이곳이바뀌면  useMemo실행])
+const getDiaryAnalysis = useMemo(() => {}, [data.length]);
+```
+
+#### React.memo 함수형 컴포넌트에게 업데이트 조건을 걸자.
