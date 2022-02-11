@@ -287,21 +287,61 @@ isPositive(
 );
 ```
 
+#### useReducer()
+
+- 컴포넌트의 상태 업데이트 로직을 컴포넌트에서 분리하기위해 사용
+- state 는 우리가 앞으로 컴포넌트에서 사용 할 수 있는 상태를 가르키게 되고, dispatch 는 액션을 발생시키는 함수라고 이해하면된다.
+- initialState는 초기 상태값
+
+```javascript
+const [state, dispatch] = useReducer(reducer, initialState);
+```
+
 #### useCallback()
 
 - 함수를 랜더를 계속안시키려고 쓴다고봄
 - useCallback( e => {},[배열] ) , 배열의 상태가변할때에만 render된다!
 
-```
+```javascript
 const onChange = useCallback(
-    e => {
-      const { name, value } = e.target;
-      setInputs({
-        ...inputs,
-        [name]: value
-      });
-    },[inputs]);
+  (e) => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  },
+  [inputs]
+);
 ```
+
+#### Context API
+
+- Context 를 만들 땐 다음과 같이 React.createContext() 라는 함수를
+  사용한다 쿠크르삥뽕.
+- createContext 의 파라미터에는 Context 의 기본값을 설정할 수 있다. 여기서 설정하는 값은 Context 를 쓸 때 값을 따로 지정하지 않을 경우 사용되는 기본 값 입니다.
+
+```javascript
+const UserDispatch = React.createContext(null);
+```
+
+- Context 안에 Provider 라는 컴포넌트가 들어있는데 이 컴포넌트를 통하여 Context 의 값을 정할 수 있따. 이 컴포넌트를 사용할 때, value 라는 값을 설정해주면 된다임마
+
+```javascript
+<UserDispatch.Provider value={dispatch}>...</UserDispatch.Provider>
+```
+
+- 이제사용할 컴포넌트로 이동해서 요런식으로 짜라란 하면 props안넘겨받아도전역적으로 사용가능하다라구라구라굴아
+
+```javascript
+ const dispatch = useContext(UserDispatch);
+
+ onClick={() => {
+          dispatch({ type: 'TOGGLE_USER', id: user.id });
+        }}
+```
+
+---
 
 #### 콜백지옥 Promise로 처리하기
 
@@ -388,6 +428,14 @@ const getDiaryAnalysis = useMemo(() => {}, [data.length]);
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
   /* props를 사용하여 렌더링 */
+});
+
+ex))
+const User = React.memo(function User({ user, onRemove, onToggle }) {
+  return (
+    <div>
+    </div>
+  );
 });
 ```
 
