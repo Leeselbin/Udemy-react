@@ -287,6 +287,22 @@ isPositive(
 );
 ```
 
+#### useCallback()
+
+- 함수를 랜더를 계속안시키려고 쓴다고봄
+- useCallback( e => {},[배열] ) , 배열의 상태가변할때에만 render된다!
+
+```
+const onChange = useCallback(
+    e => {
+      const { name, value } = e.target;
+      setInputs({
+        ...inputs,
+        [name]: value
+      });
+    },[inputs]);
+```
+
 #### 콜백지옥 Promise로 처리하기
 
 - Promis 객체를 이용하면 비동기처리를 호출하는 코드와 결과를 처리하는코드를 분리 할 수있다.
